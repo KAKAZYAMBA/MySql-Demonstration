@@ -1,0 +1,154 @@
+USE `timba`;
+
+INSERT INTO `color`(colors) VALUES ('Brown');
+INSERT INTO `color`(colors) VALUES ('Creamy');
+INSERT INTO `color`(colors) VALUES ('green ');
+INSERT INTO `color`(colors) VALUES ('Grey');
+INSERT INTO `color`(colors) VALUES ('red');
+INSERT INTO `color`(colors) VALUES ('blue');
+INSERT INTO `color`(colors) VALUES ('blac');
+INSERT INTO `color`(colors) VALUES ('Purple');
+INSERT INTO `color`(colors) VALUES ('Sand');
+INSERT INTO `color`(colors) VALUES ('wрite');
+
+
+INSERT INTO `product_type` (name) VALUES ('shoes');
+INSERT INTO `product_type` (name) VALUES ('clothes');
+
+
+INSERT INTO `for_whom` (name) VALUES ('male');
+INSERT INTO `for_whom` (name) VALUES ('female');
+INSERT INTO `for_whom` (name) VALUES ('children');
+
+
+INSERT INTO `season (name) VALUES ('winter');
+INSERT INTO `season` (name) VALUES ('autumn');
+INSERT INTO `season` (name) VALUES ('spring');
+INSERT INTO `season` (name) VALUES ('summer');
+
+
+INSERT INTO `users` (`first_name`, `last_name`, `password`, `email`, `phone`)
+VALUES ('Genadiy', 'Muhich', 'bhf56874268', 'muhich@mail.ru', +72546982138);
+
+INSERT INTO `users` (`first_name`, `last_name`, `password`, `email`, `phone`)
+VALUES ('Artiom', 'Pupkin',  'bdth454df', 'pupkin@gmail.com', '+45623897525');
+
+INSERT INTO `users` (`first_name`, `last_name`, `password`, `email`, `phone`)
+VALUES ('David', 'Lagrisa', '4521451hkie4', 'lagri@gmail.com', '+972589378169');
+
+INSERT INTO `users` (`first_name`, `last_name`, `password`, `email`, `phone`)
+VALUES ('Tom', 'Feldman', 'qrd5484gtyu25', 'tomfeldman@gmail.com', '+972521875837');
+
+INSERT INTO `users` (`first_name`, `last_name`, `password`, `email`, `phone`)
+VALUES ('Amnon', 'Talgauker', 'an54785412', 'talg@gmail.com', '+972506893418');
+
+INSERT INTO `users` (`first_name`, `last_name`, `password`, `email`, `phone`)
+VALUES ('Tina', 'Boyd', 'fhgj4523897', 'boydti@mail.ru', '+4525879614');
+
+
+INSERT INTO `technology` (name_techno) VALUES ('heat');
+INSERT INTO `technology` (name_techno) VALUES ('dry');
+INSERT INTO `technology` (name_techno) VALUES ('breathability');
+INSERT INTO `technology` (name_techno) VALUES ('comfort');
+INSERT INTO `technology` (name_techno) VALUES ('environmental care');
+
+
+INSERT INTO `technology_type` (name, technology_id) VALUES ('primaloft_eco', '1');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('dryvent_waterproof_technology', '2');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('timberland_waterproof', '2');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('gore-tax', '2');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('timberdry', '2');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('comfortemp', '3');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('aerecore_energy_system', '4');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('anti-fatigue', '4');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('ortholite', '4');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('sensorflex', '4');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('timbergrip', '5');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('greenstride', '6');
+INSERT INTO `technology_type` (name, technology_id) VALUES ('rebolt', '6');
+
+
+INSERT INTO `media_type` (name_type_med) VALUES ('video');
+INSERT INTO `media_type` (name_type_med) VALUES ('images');
+
+
+INSERT INTO `product_category` (name) VALUES ('boots');
+INSERT INTO `product_category` (name) VALUES ('jacket');
+INSERT INTO `product_category` (name) VALUES ('low shoes');
+
+
+INSERT INTO `heat` (type_heat) VALUES ('warmer');
+INSERT INTO `heat` (type_heat) VALUES ('very warm');
+
+INSERT INTO `features` (name) VALUES ('waterproof');
+INSERT INTO `features` (name) VALUES ('technological filler');
+
+
+
+INSERT INTO `accessories` (name) VALUES ('Bags and backpacks');
+INSERT INTO `accessories` (name) VALUES ('Belts');
+INSERT INTO `accessories` (name) VALUES ('Socks');
+INSERT INTO `accessories` (name) VALUES ('Hats and scarves');
+INSERT INTO `accessories` (name) VALUES ('Wallets');
+INSERT INTO `accessories` (name) VALUES ('Shoe accessories');
+INSERT INTO `accessories` (name) VALUES ('Gift cards');
+
+
+
+INSERT INTO `shoes_type` (name, prod_type_id, cat_type_id) VALUES ('boots', '2', '1');
+INSERT INTO `shoes_type` (name, prod_type_id, cat_type_id) VALUES ('low shoes', '2', '3');
+INSERT INTO `shoes_type` (name, prod_type_id, cat_type_id) VALUES ('sneakers', '2', '3');
+INSERT INTO `shoes_type` (name, prod_type_id, cat_type_id) VALUES ('moccasins', '2', '3');
+INSERT INTO `shoes_type` (name, prod_type_id, cat_type_id) VALUES ('sandals', '2', '3');
+
+
+INSERT INTO `media`(file_name, size, metadata, media_type_id) VALUES 
+('jacket', '1681257', 'https://timberland.ru/upload/iblock/30e/5f61ced69e152.jpg', '2');
+INSERT INTO `media`(file_name, size, metadata, media_type_id) VALUES 
+('jacket', '723254', 'https://timberland.ru/upload/iblock/7ad/5f6499ea19bb4.jpg', '2');
+INSERT INTO `media`(file_name, size, metadata, media_type_id) VALUES 
+('sweater', '245213', 'https://timberland.ru/upload/iblock/050/601d01c1f3629.jpg', '2');
+INSERT INTO `media`(file_name, size, metadata, media_type_id) VALUES 
+('shirt', '512367', 'https://timberland.ru/upload/iblock/27e/602635132b5e9_first_photo.jpg', '2');
+INSERT INTO `media`(file_name, size, metadata, media_type_id) VALUES 
+('sneakers', '1238795', 'https://timberland.ru/upload/iblock/17e/5d97536a25824.jpg', '2');
+
+
+
+INSERT INTO `profiles`(gender, birthday, country, city, address) VALUES ('M', '1979-08-21', 'russia', 'kazan', 'lenina-42');
+INSERT INTO `profiles`(gender, birthday, country, city) VALUES ('M', '1984-03-14', 'denmark', 'kopenhagen');
+INSERT INTO `profiles`(gender, birthday) VALUES ('M', '2002-01-23');
+INSERT INTO `profiles`(gender, birthday, country, city, address) VALUES ('M', '1995-04-17', 'israel', 'holon', 'vaycman-68');
+INSERT INTO `profiles`(gender, birthday, country) VALUES ('M', '1998-05-10', 'israel');
+INSERT INTO `profiles`(gender, birthday, country, city, address) VALUES ('F', '1989-06-22', 'denmark', 'odense', 'nyborgvej-12');
+
+
+INSERT INTO `product`(pro_cat_id, pro_type_id, color_id, features_id, heat_id, season_id, size_id, technology_id, media_id, price) 
+VALUES ('3', '2', '3', '1', '1', '2', '4', '4', '5', '12899.99');
+INSERT INTO `product`(pro_cat_id, pro_type_id, color_id, features_id, heat_id, season_id, size_id, technology_id, media_id, discount, price) 
+VALUES ('2', '1', '2', '2', '2', '1', '4', '1', '1', '5', '24000');
+INSERT INTO `product`(pro_cat_id, pro_type_id, color_id, features_id, heat_id, season_id, size_id, technology_id, media_id, price) 
+VALUES ('3', '2', '7', '1', '1', '2', '4', '4', '5', '14999.99');
+INSERT INTO `product`(pro_cat_id, pro_type_id, color_id, features_id, heat_id, season_id, size_id, technology_id, media_id, price) 
+VALUES ('2', '1', '9', '2', '2', '1', '5', '2', '3', '10000');
+INSERT INTO `product`(pro_cat_id, pro_type_id, color_id, features_id, heat_id, season_id, size_id, technology_id, media_id, discount, price) 
+VALUES ('1', '2', '1', '2', '1', '3', '5', '5', '5', '10', '13000');
+INSERT INTO `product`(pro_cat_id, pro_type_id, color_id, features_id, heat_id, season_id, size_id, technology_id, media_id, price) 
+VALUES ('1', '2', '2', '1', '1', '4', '2', '2', '5', '9000');
+
+
+
+INSERT INTO `faforite` (user_id, product_id) VALUES ('6', '3');
+INSERT INTO `faforite` (user_id, product_id) VALUES ('1', '5');
+INSERT INTO `faforite` (user_id, product_id) VALUES ('4', '2');
+INSERT INTO `faforite` (user_id) VALUES ('3');
+
+
+INSERT INTO `cart` (user_id, product_id, quantity, discount, price, total_price)
+ VALUES ('1', '4', '2', '10', '9000', '18000');
+INSERT INTO `cart` (user_id, product_id, quantity, price, total_price)
+ VALUES ('5', '1', '1', '12899.99', '12899.99');
+INSERT INTO `cart` (user_id, product_id, quantity, discount, price, total_price)
+ VALUES ('4', '2', '1', '5', '23200', '23200');
+ INSERT INTO `cart` (user_id, product_id, quantity, price, total_price)
+ VALUES ('4', '5', '1', '13000', '13000');

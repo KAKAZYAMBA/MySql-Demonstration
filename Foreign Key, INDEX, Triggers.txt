@@ -1,0 +1,191 @@
+  
+USE timba;
+
+
+ALTER TABLE `timba`.`profiles` 
+ADD CONSTRAINT `fk_profiles_users`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `timba`.`users` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `product` 
+ADD INDEX `fk_product_pro_cat_idx` (`pro_cat_id` ASC) VISIBLE,
+ADD INDEX `fk_product_pro_type_idx` (`pro_type_id` ASC) VISIBLE,
+ADD INDEX `fk_product_color_idx` (`color_id` ASC) VISIBLE,
+ADD INDEX `fk_product_features_idx` (`features_id` ASC) VISIBLE,
+ADD INDEX `fk_product_heat_idx` (`heat_id` ASC) VISIBLE,
+ADD INDEX `fk_product_season_idx` (`season_id` ASC) VISIBLE,
+ADD INDEX `fk_product_size_idx` (`size_id` ASC) VISIBLE,
+ADD INDEX `fk_product_technology_idx` (`technology_id` ASC) VISIBLE,
+ADD INDEX `fk_product_media_idx` (`media_id` ASC) VISIBLE;
+;
+ALTER TABLE `product` 
+
+ADD CONSTRAINT `fk_product_pro_cat`
+  FOREIGN KEY (`pro_cat_id`)
+  REFERENCES `timba`.`product_category` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+ADD CONSTRAINT `fk_product_pro_type`
+  FOREIGN KEY (`pro_type_id`)
+  REFERENCES `timba`.`product_type` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+ADD CONSTRAINT `fk_product_color`
+  FOREIGN KEY (`color_id`)
+  REFERENCES `timba`.`color` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+ADD CONSTRAINT `fk_product_features`
+  FOREIGN KEY (`features_id`)
+  REFERENCES `timba`.`features` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+ADD CONSTRAINT `fk_product_heat`
+  FOREIGN KEY (`heat_id`)
+  REFERENCES `timba`.`heat` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+ADD CONSTRAINT `fk_product_season`
+  FOREIGN KEY (`season_id`)
+  REFERENCES `timba`.`season` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+ADD CONSTRAINT `fk_product_size`
+  FOREIGN KEY (`size_id`)
+  REFERENCES `timba`.`size` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+ADD CONSTRAINT `fk_product_technology`
+  FOREIGN KEY (`technology_id`)
+  REFERENCES `timba`.`technology` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+
+ADD CONSTRAINT `fk_product_media`
+  FOREIGN KEY (`media_id`)
+  REFERENCES `timba`.`media` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `media` 
+ADD INDEX `fk_media_med_type_idx` (`media_type_id` ASC) VISIBLE;
+
+ALTER TABLE `media` 
+ADD CONSTRAINT `fk_media_med_type`
+  FOREIGN KEY (`media_type_id`)
+  REFERENCES `timba`.`media_type` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `cart` 
+ADD INDEX `fk_cart_users_idx` (`user_id` ASC) VISIBLE,
+ADD INDEX `fk_cart_product_idx` (`product_id` ASC) VISIBLE;
+
+ALTER TABLE `cart` 
+ADD CONSTRAINT `fk_cart_users`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `timba`.`users` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_cart_product`
+  FOREIGN KEY (`product_id`)
+  REFERENCES `timba`.`product` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `faforite` 
+ADD INDEX `fk_faforite_users_idx` (`user_id` ASC) VISIBLE;
+
+ALTER TABLE `faforite` 
+ADD CONSTRAINT `fk_faforite_users`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `timba`.`users` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `faforite` 
+CHANGE COLUMN `user_id` `user_id` INT UNSIGNED NOT NULL ,
+ADD INDEX `fk_faforite_users_idx` (`user_id` ASC) VISIBLE,
+ADD INDEX `fk_faforite_product_idx` (`product_id` ASC) VISIBLE;
+
+ALTER TABLE `faforite` 
+ADD CONSTRAINT `fk_faforite_users`
+  FOREIGN KEY (`user_id`)
+  REFERENCES `timba`.`users` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_faforite_product`
+  FOREIGN KEY (`product_id`)
+  REFERENCES `timba`.`product` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+
+DELIMITER /
+USE `timba`/
+CREATE DEFINER = CURRENT_USER TRIGGER `users_AFTER_INSERT` AFTER INSERT ON `users`
+ FOR EACH ROW
+BEGIN
+INSERT INTO profiles VALUES ('NEW.user_id');
+END;/
+DELIMITER ;
+
+
+ALTER TABLE `technology_type` 
+ADD INDEX `fk_technology_type_technology_idx` (`technology_id` ASC) VISIBLE;
+;
+ALTER TABLE `technology_type` 
+ADD CONSTRAINT `fk_technology_type_technology`
+  FOREIGN KEY (`technology_id`)
+  REFERENCES `timba`.`technology` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `shoes_type` 
+ADD CONSTRAINT `fk_shoes_type_prod_type`
+  FOREIGN KEY (`prod_type_id`)
+  REFERENCES `product_type` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_shoes_type_prod_cat`
+  FOREIGN KEY (`cat_type_id`)
+  REFERENCES `product_category` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `clothes_type` 
+ADD CONSTRAINT `fk_clothes_type_prod_type`
+  FOREIGN KEY (`prod_type_id`)
+  REFERENCES `product_type` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+ADD CONSTRAINT `fk_clothes_type_prod_cat`
+  FOREIGN KEY (`prod_cat_id`)
+  REFERENCES `product_category` (`id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;
+
+
+ALTER TABLE `technology` 
+ADD CONSTRAINT `fk_technology_technology_type`
+  FOREIGN KEY (`id`)
+  REFERENCES `technology_type` (`technology_id`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE;

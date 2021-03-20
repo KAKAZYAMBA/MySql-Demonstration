@@ -1,0 +1,25 @@
+SELECT users.last_name, users.first_name, profiles.gender, profiles.birthday, profiles.country
+FROM users
+ JOIN profiles on profiles.user_id = users.id;
+
+
+SELECT DISTINCT users.last_name,
+SUM(cart.total_price) OVER (PARTITION BY cart.user_id) AS Total_price,
+COUNT(cart.quantity) OVER (PARTITION BY cart.user_id) AS Quantity_orders
+FROM users
+ JOIN cart ON users.id = cart.user_id;
+  
+
+
+CREATE OR REPLACE VIEW T_P AS
+SELECT technology.name_techno AS T, 
+  product.id AS P
+FROM technology
+JOIN product ON product.technology_id = product.id;
+
+
+CREATE VIEW Artiomka
+           AS SELECT *
+           FROM profiles
+           WHERE country = 'israel';
+
